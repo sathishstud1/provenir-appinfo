@@ -6,7 +6,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {  
-      appId:0,
+      appId:'',
       isSearchPage:true
     };
     this.json = {};
@@ -43,16 +43,25 @@ class App extends React.Component {
 
   render() {  
     return (
-      <div>
-        {this.state.isSearchPage?<div style={{padding:'5%'}}>
-        <label style={{paddingRight:'10px'}}>App ID</label>
-        <input type="text" defaultValue={this.state.appId} onChange={this.onChangeHandler}/>
-        
-        <button onClick={()=>this.getAppInfoJson()} style={{marginLeft:'20px'}}>
-                    Search
-                  </button>
-        </div>:<ViewOnboard json={this.json}/>}
-      </div>
+      <div style={{padding: '10px'}}>
+        {this.state.isSearchPage?          
+        <div style={{backgroundColor: '#20a8d8',height:'5vh', borderRadius: '.3rem .3rem 0 0',textAlign:'center'}}>
+          <lable style={{color:'white', fontSize: '25px',fontWeight: '600'}}>App Info</lable>
+          <div style={{boxSizing: 'border-box', 
+                  boxShadow: '0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)'}}>
+              <div style={{padding:'5%'}}>
+                  <label style={{paddingRight:'10px'}}>App ID</label>
+                  <input type="text" defaultValue={this.state.appId} onChange={this.onChangeHandler}/>
+                  
+                  <button className="btn btn-primary mr-3" onClick={()=>this.getAppInfoJson()} style={{marginLeft:'20px'}}>
+                              Search
+                            </button>
+              </div>
+          </div>
+        </div> : 
+        <ViewOnboard json={this.json}/>
+       }
+        </div>        
     ); 
   }
 }

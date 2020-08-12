@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import CreateViewPage from './CreateViewPage';
 import PageNavigation from './PageNavigation';
+import 'bootstrap/dist/css/bootstrap.css';
 
 class ViewOnboard extends React.Component {
   constructor(props) {
@@ -104,7 +105,8 @@ class ViewOnboard extends React.Component {
     
 
     btns.push(
-      <div style={{display: 'inline-block'}}><button ref="previousBtn"
+      <div style={{display: 'inline-block'}}><button  className="btn btn-primary mr-3"
+              ref="previousBtn"
               key='previousPage'
               onClick={() => {
                   const pageId = PageNavigation.previousPage(this.state.currentPageId, this.PageLength, "ShowPage", "previousBtn", "nextBtn", this, ReactDOM);
@@ -129,6 +131,10 @@ class ViewOnboard extends React.Component {
     return (
          <div style={{boxSizing: 'border-box', 
             boxShadow: '0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)'}}>
+                <button className="btn btn-primary" onClick={()=>this.relaodPage()} 
+                style={{float:'right', padding: '.5%',fontSize: '20px', backgroundColor: 'rgb(32, 168, 216)'}}>
+                   Back to Home
+                  </button>
                 <ul style={{backgroundColor: '#20a8d8',
                     height:'7vh', 
                           borderRadius: '.3rem .3rem 0 0',
@@ -136,12 +142,10 @@ class ViewOnboard extends React.Component {
                     {tabs.length>1?tabs:null}
               </ul>
                 <div style={{paddingRight: '2%',paddingLeft: '2%',paddingBottom: '5%'}}>{items} </div>
-                <div className="text-right float-right" style={{width: '20%'}}>
+                <div className="text-right float-right" style={{width: '20%', marginBottom: '20px'}}>
                     {btns}
                 </div>
-                <button onClick={()=>this.relaodPage()} style={{marginLeft:'20px'}}>
-                   Back
-                  </button>
+               
                 <div className="clearfix"></div>
             </div>
          

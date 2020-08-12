@@ -1,4 +1,5 @@
 import React from 'react';
+import 'bootstrap/dist/css/bootstrap.css';
 
 class ViewFormModel extends React.Component { 
 
@@ -12,11 +13,12 @@ class ViewFormModel extends React.Component {
         case('text'):
           formfields.push(
             <div className={'form-group ' + fieldData.colWidth} key={"viewText"+fieldId}>
-              <label htmlFor={fieldId}>{fieldData.label}</label>
+              <label htmlFor={fieldId}>{fieldData.label}</label><br/>
               <input className="formControl"
                             type={fieldData.type}
                             key={fieldId}                  
                             defaultValue={fieldData.value}
+                            style= {{width:'90%',backgroundColor: 'lightgrey',border: 'none'}}
                             readOnly/>
             </div>
           );
